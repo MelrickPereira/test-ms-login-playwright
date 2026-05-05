@@ -19,10 +19,10 @@ jobs:
       run: npx playwright install --with-deps
     - name: Run Playwright tests
       env:
-        MS_EMAIL: ${{ playwright-test.MS_EMAIL }}
-        MS_EXPECTED_NAME: ${{ playwright-test.MS_EXPECTED_NAME }
-        MS_PASSWORD: ${{ playwright-test.MS_PASSWORD }
-        MS_TOTP_SECRET: ${{ playwright-test.MS_TOTP_SECRET }      
+        MS_EMAIL: ${{ secrets.MS_EMAIL }}
+        MS_EXPECTED_NAME: ${{ secrets.MS_EXPECTED_NAME }}
+        MS_PASSWORD: ${{ secrets.MS_PASSWORD }}
+        MS_TOTP_SECRET: ${{ secrets.MS_TOTP_SECRET }}  
       run: npx playwright test
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
